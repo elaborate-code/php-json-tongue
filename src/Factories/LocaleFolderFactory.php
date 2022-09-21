@@ -1,12 +1,12 @@
 <?php
 
-namespace ElaborateCode\JigsawLocalization\Factories;
+namespace ElaborateCode\JsonTongue\Factories;
 
-use ElaborateCode\JigsawLocalization\Composites\LocaleFolder;
-use ElaborateCode\JigsawLocalization\Composites\MultiLocaleFolder;
-use ElaborateCode\JigsawLocalization\Contracts\LocaleFolderLoader;
+use ElaborateCode\JsonTongue\Composites\LocaleFolder;
+use ElaborateCode\JsonTongue\Composites\MultiLocaleFolder;
+use ElaborateCode\JsonTongue\Contracts\LocaleFolderLoader;
 
-class LocaleFolderFactory
+final class LocaleFolderFactory
 {
     public function make(string $abs_path): LocaleFolderLoader
     {

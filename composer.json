@@ -33,7 +33,7 @@
             "src/Helpers/helpers.php"
         ],
         "psr-4": {
-            "ElaborateCode\\JigsawLocalization\\": "src/"
+            "ElaborateCode\\JsonTongue\\": "src/"
         }
     },
     "scripts": {

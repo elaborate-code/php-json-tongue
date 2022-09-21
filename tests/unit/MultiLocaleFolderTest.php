@@ -1,8 +1,8 @@
 <?php
 
-use ElaborateCode\JigsawLocalization\Composites\MultiLocaleFolder;
-use ElaborateCode\JigsawLocalization\Factories\LocaleFolderFactory;
-use ElaborateCode\JigsawLocalization\Strategies\File;
+use ElaborateCode\JsonTongue\Composites\MultiLocaleFolder;
+use ElaborateCode\JsonTongue\Factories\LocaleFolderFactory;
+use ElaborateCode\JsonTongue\Strategies\File;
 
 it('factory gives MultiLocaleFolder when folder is multi', function () {
     $factory = new LocaleFolderFactory;

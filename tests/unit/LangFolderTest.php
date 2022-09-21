@@ -1,7 +1,7 @@
 <?php
 
-use ElaborateCode\JigsawLocalization\Composites\LangFolder;
-use ElaborateCode\JigsawLocalization\Strategies\File;
+use ElaborateCode\JsonTongue\Composites\LangFolder;
+use ElaborateCode\JsonTongue\Strategies\File;
 
 it('lists available locales correctly', function () {
     $lang_folder = new LangFolder('/tests/lang');

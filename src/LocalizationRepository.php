@@ -1,12 +1,12 @@
 <?php
 
-namespace ElaborateCode\JigsawLocalization;
+namespace ElaborateCode\JsonTongue;
 
-class LocalizationRepository
+final class LocalizationRepository
 {
     protected array $translations = [];
 
-    public function merge(string $lang, array $translations)
+    public function merge(string $lang, array $translations): void
     {
         if (isset($this->translations[$lang])) {
             $this->translations[$lang] = $this->translations[$lang] + $translations;
@@ -15,7 +15,10 @@ class LocalizationRepository
         }
     }
 
-    public function getTranslations()
+    /**
+     * @return array<array<string>>
+     */
+    public function getTranslations(): array
     {
         // TODO: return a reference ?
         return $this->translations;

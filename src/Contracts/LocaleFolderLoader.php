@@ -1,10 +1,10 @@
 <?php
 
-namespace ElaborateCode\JigsawLocalization\Contracts;
+namespace ElaborateCode\JsonTongue\Contracts;
 
-use ElaborateCode\JigsawLocalization\Composites\LocaleJson;
-use ElaborateCode\JigsawLocalization\LocalizationRepository;
-use ElaborateCode\JigsawLocalization\Strategies\File;
+use ElaborateCode\JsonTongue\Composites\LocaleJson;
+use ElaborateCode\JsonTongue\LocalizationRepository;
+use ElaborateCode\JsonTongue\Strategies\File;
 use Exception;
 
 abstract class LocaleFolderLoader
@@ -13,12 +13,10 @@ abstract class LocaleFolderLoader
 
     protected string $lang;
 
-    protected array $jsonsList;
-
     /**
-     * @var array<LocaleJson>
+     * @var array<LocaleJsonLoader>
      */
-    protected array $localeJsons;
+    protected array $localeJsonLoadersCollection;
 
     public function __construct(string $abs_path)
     {
@@ -31,9 +29,7 @@ abstract class LocaleFolderLoader
 
         $this->setLangFromPath();
 
-        $this->setJsonsList();
-
-        $this->setJsons();
+        $this->setJsonLoadersCollection();
     }
 
     /* =================================== */
@@ -48,22 +44,16 @@ abstract class LocaleFolderLoader
 
     protected function setLangFromPath(): void
     {
-        //
         $this->lang = basename($this->directory->getPath());
     }
 
-    protected function setJsonsList(): void
+    protected function setJsonLoadersCollection(): void
     {
-        $this->jsonsList = $this->directory->getDirectoryJsonContent();
-    }
+        $this->localeJsonLoadersCollection = [];
 
-    protected function setJsons()
-    {
-        $this->localeJsons = [];
-
-        foreach ($this->jsonsList as $file_name => $abs_path) {
+        foreach ($this->directory->getDirectoryJsonContent() as $file_name => $abs_path) {
             // ! IOC
-            $this->localeJsons[$file_name] = new LocaleJson($abs_path);
+            $this->localeJsonLoadersCollection[$file_name] = new LocaleJson($abs_path);
         }
     }
 
@@ -76,8 +66,11 @@ abstract class LocaleFolderLoader
         return $this->lang;
     }
 
+    /**
+     * @return array<string> 'JSON_name' => 'file_absolute_path'
+     */
     public function getJsonsList(): array
     {
-        return $this->jsonsList;
+        return $this->directory->getDirectoryJsonContent();
     }
 }

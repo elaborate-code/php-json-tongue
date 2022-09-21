@@ -1,12 +1,12 @@
 <?php
 
-namespace ElaborateCode\JigsawLocalization\Composites;
+namespace ElaborateCode\JsonTongue\Composites;
 
-use ElaborateCode\JigsawLocalization\Contracts\LangFolderLoader;
-use ElaborateCode\JigsawLocalization\Contracts\LocaleFolderLoader;
-use ElaborateCode\JigsawLocalization\Factories\LocaleFolderFactory;
-use ElaborateCode\JigsawLocalization\LocalizationRepository;
-use ElaborateCode\JigsawLocalization\Strategies\File;
+use ElaborateCode\JsonTongue\Contracts\LangFolderLoader;
+use ElaborateCode\JsonTongue\Contracts\LocaleFolderLoader;
+use ElaborateCode\JsonTongue\Factories\LocaleFolderFactory;
+use ElaborateCode\JsonTongue\LocalizationRepository;
+use ElaborateCode\JsonTongue\Strategies\File;
 
 final class LangFolder implements LangFolderLoader
 {
@@ -17,7 +17,7 @@ final class LangFolder implements LangFolderLoader
     /**
      * @var array<LocaleFolderLoader> 'lang_code' => LocaleFolderLoader instance
      */
-    protected array $localesList;
+    protected array $localeLoadersCollection;
 
     /**
      * @param  string  $lang_path Lang directory path from the project root
@@ -30,7 +30,7 @@ final class LangFolder implements LangFolderLoader
         // ! IOC
         $this->localeFolderFactory = new LocaleFolderFactory;
 
-        $this->setLocales();
+        $this->setLocaleLoadersCollection();
     }
 
     /* =================================== */
@@ -39,7 +39,7 @@ final class LangFolder implements LangFolderLoader
 
     public function orderLoadingTranslations(LocalizationRepository $localization_repo): void
     {
-        foreach ($this->localesList as $lang => $localeFolder) {
+        foreach ($this->localeLoadersCollection as $lang => $localeFolder) {
             $localeFolder->loadTranslations($localization_repo);
         }
     }
@@ -48,12 +48,12 @@ final class LangFolder implements LangFolderLoader
     //          Setters
     /* =================================== */
 
-    protected function setLocales(): void
+    protected function setLocaleLoadersCollection(): void
     {
-        $this->localesList = [];
+        $this->localeLoadersCollection = [];
 
         foreach ($this->directory->getDirectoryContent() as $lang => $abs_path) {
-            $this->localesList[$lang] = $this->localeFolderFactory->make($abs_path);
+            $this->localeLoadersCollection[$lang] = $this->localeFolderFactory->make($abs_path);
         }
     }
 
@@ -61,13 +61,19 @@ final class LangFolder implements LangFolderLoader
     //          Simple getters
     /* =================================== */
 
+    /**
+     * @return array<string>
+     */
     public function getLocalesList(): array
     {
         return array_keys($this->directory->getDirectoryContent());
     }
 
-    public function getLocales(): array
+    /**
+     * @return array<LocaleFolderLoader>
+     */
+    public function getLocaleLoadersCollection(): array
     {
-        return $this->localesList;
+        return $this->localeLoadersCollection;
     }
 }

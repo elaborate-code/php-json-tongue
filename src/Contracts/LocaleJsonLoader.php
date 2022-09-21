@@ -1,6 +1,6 @@
 <?php
 
-namespace ElaborateCode\JigsawLocalization\Contracts;
+namespace ElaborateCode\JsonTongue\Contracts;
 
 interface LocaleJsonLoader
 {

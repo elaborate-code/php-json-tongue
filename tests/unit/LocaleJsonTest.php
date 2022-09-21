@@ -1,7 +1,7 @@
 <?php
 
-use ElaborateCode\JigsawLocalization\Composites\LocaleJson;
-use ElaborateCode\JigsawLocalization\Strategies\File;
+use ElaborateCode\JsonTongue\Composites\LocaleJson;
+use ElaborateCode\JsonTongue\Strategies\File;
 
 it('gets JSON content correctly', function () {
     $file = new File('/tests/lang/en/en.json');

@@ -1,10 +1,10 @@
 <?php
 
-namespace ElaborateCode\JigsawLocalization\Strategies;
+namespace ElaborateCode\JsonTongue\Strategies;
 
 use Stringable;
 
-class File implements Stringable
+final class File implements Stringable
 {
     /**
      * Realpath

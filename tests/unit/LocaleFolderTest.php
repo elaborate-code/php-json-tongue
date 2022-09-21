@@ -1,8 +1,8 @@
 <?php
 
-use ElaborateCode\JigsawLocalization\Composites\LocaleFolder;
-use ElaborateCode\JigsawLocalization\Factories\LocaleFolderFactory;
-use ElaborateCode\JigsawLocalization\Strategies\File;
+use ElaborateCode\JsonTongue\Composites\LocaleFolder;
+use ElaborateCode\JsonTongue\Factories\LocaleFolderFactory;
+use ElaborateCode\JsonTongue\Strategies\File;
 
 it('sets locale lang correctly', function () {
     $factory = new LocaleFolderFactory;

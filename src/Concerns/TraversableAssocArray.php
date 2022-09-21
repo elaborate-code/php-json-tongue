@@ -1,6 +1,6 @@
 <?php
 
-namespace ElaborateCode\JigsawLocalization\Concerns;
+namespace ElaborateCode\JsonTongue\Concerns;
 
 use ReturnTypeWillChange;
 
@@ -8,32 +8,32 @@ use ReturnTypeWillChange;
 
 trait TraversableAssocArray
 {
-    public array $assocArrayProperty;
+    public string $traversableAssocPropertyName;
 
     public function rewind(): void
     {
-        reset($this->assocArrayProperty);
+        reset($this->{$this->traversableAssocPropertyName});
     }
 
     #[ReturnTypeWillChange]
     public function current()
     {
-        return current($this->assocArrayProperty);
+        return current($this->{$this->traversableAssocPropertyName});
     }
 
     #[ReturnTypeWillChange]
     public function key()
     {
-        return key($this->assocArrayProperty);
+        return key($this->{$this->traversableAssocPropertyName});
     }
 
     public function next(): void
     {
-        next($this->assocArrayProperty);
+        next($this->{$this->traversableAssocPropertyName});
     }
 
     public function valid(): bool
     {
-        return ! is_null(key($this->assocArrayProperty));
+        return ! is_null(key($this->{$this->traversableAssocPropertyName}));
     }
 }

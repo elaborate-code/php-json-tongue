@@ -1,11 +1,11 @@
 <?php
 
-namespace ElaborateCode\JigsawLocalization\Composites;
+namespace ElaborateCode\JsonTongue\Composites;
 
-use ElaborateCode\JigsawLocalization\Contracts\LocaleFolderLoader;
-use ElaborateCode\JigsawLocalization\LocalizationRepository;
+use ElaborateCode\JsonTongue\Contracts\LocaleFolderLoader;
+use ElaborateCode\JsonTongue\LocalizationRepository;
 
-class MultiLocaleFolder extends LocaleFolderLoader
+final class MultiLocaleFolder extends LocaleFolderLoader
 {
     /* =================================== */
     //             Interface
@@ -13,7 +13,7 @@ class MultiLocaleFolder extends LocaleFolderLoader
 
     public function loadTranslations(LocalizationRepository $localization_repo): void
     {
-        foreach ($this->localeJsons as $json_name => $multi_locale_json) {
+        foreach ($this->localeJsonLoadersCollection as $json_name => $multi_locale_json) {
             foreach ($multi_locale_json->getContent() as $lang => $locale) {
                 $localization_repo->merge($lang, $locale);
             }

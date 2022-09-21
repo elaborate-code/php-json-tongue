@@ -1,9 +1,9 @@
 <?php
 
-namespace ElaborateCode\JigsawLocalization\Composites;
+namespace ElaborateCode\JsonTongue\Composites;
 
-use ElaborateCode\JigsawLocalization\Contracts\LocaleJsonLoader;
-use ElaborateCode\JigsawLocalization\Strategies\File;
+use ElaborateCode\JsonTongue\Contracts\LocaleJsonLoader;
+use ElaborateCode\JsonTongue\Strategies\File;
 use Exception;
 
 final class LocaleJson implements LocaleJsonLoader
@@ -29,6 +29,9 @@ final class LocaleJson implements LocaleJsonLoader
     //
     /* =================================== */
 
+    /**
+     * @return array<string>|array<array<string>>
+     */
     public function getContent(): array
     {
         return $this->content;

@@ -1,6 +1,6 @@
 <?php
 
-use ElaborateCode\JigsawLocalization\Strategies\File;
+use ElaborateCode\JsonTongue\Strategies\File;
 
 it('gets correct project root path', function () {
     $root_folder = new File;

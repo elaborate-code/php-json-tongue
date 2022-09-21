@@ -1,12 +1,13 @@
 <?php
 
-namespace ElaborateCode\JigsawLocalization;
+namespace ElaborateCode\JsonTongue;
 
-use ElaborateCode\JigsawLocalization\Composites\LangFolder;
+use ElaborateCode\JsonTongue\Composites\LangFolder;
+use ElaborateCode\JsonTongue\Contracts\LangFolderLoader;
 
-class LoadLocalization
+final class TongueFacade
 {
-    protected LangFolder $langLoader;
+    protected LangFolderLoader $langLoader;
 
     protected LocalizationRepository $localizationRepo;
 
@@ -17,14 +18,19 @@ class LoadLocalization
 
         // ! IOC
         $this->localizationRepo = new LocalizationRepository;
+
+        $this->learn();
     }
 
-    public function learn(): void
+    protected function learn(): void
     {
         $this->langLoader->orderLoadingTranslations($this->localizationRepo);
     }
 
-    public function speak(): array
+    /**
+     * @return array<array<string>>
+     */
+    public function transcribe(): array
     {
         return $this->localizationRepo->getTranslations();
     }
