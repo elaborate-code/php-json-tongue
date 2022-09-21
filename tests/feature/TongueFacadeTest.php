@@ -10,14 +10,14 @@ it('complete', function () {
         ],
         'en' => [
             'en.json' => [
-                "en" => "en",
-                "Super" => "Super"
+                'en' => 'en',
+                'Super' => 'Super',
             ],
             'one.json' => [
-                "one" => "one",
+                'one' => 'one',
             ],
             'two.json' => [
-                "two" => "two",
+                'two' => 'two',
             ],
         ],
         'multi' => [

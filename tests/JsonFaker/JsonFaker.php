@@ -10,21 +10,21 @@ class JsonFaker
 
     public function __construct(array $compositions, bool $auto_roll_back = true)
     {
-        $this->langDirPath = realpath(__DIR__ . './../') . '/temp/lang';
+        $this->langDirPath = realpath(__DIR__.'./../').'/temp/lang';
 
         $this->autoRollBack = $auto_roll_back;
 
-        if (!mkdir($this->langDirPath, 0777, true)) {
+        if (! mkdir($this->langDirPath, 0777, true)) {
             throw new \Exception('yo');
         }
 
         foreach ($compositions as $locale => $jsons_list) {
-            if (!mkdir($this->langDirPath . "/$locale")) {
+            if (! mkdir($this->langDirPath."/$locale")) {
                 throw new \Exception('zo');
             }
 
             foreach ($jsons_list as $json_name => $content) {
-                file_put_contents($this->langDirPath . "/$locale/$json_name", json_encode($content));
+                file_put_contents($this->langDirPath."/$locale/$json_name", json_encode($content));
             }
         }
     }
@@ -43,7 +43,7 @@ class JsonFaker
 
     protected function delTree($dir): bool
     {
-        if (!realpath($dir)) {
+        if (! realpath($dir)) {
             return false;
         }
 
