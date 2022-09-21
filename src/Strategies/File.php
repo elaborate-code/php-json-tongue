@@ -4,8 +4,7 @@ namespace ElaborateCode\JsonTongue\Strategies;
 
 use Stringable;
 
-// final class File implements Stringable // Interface requires PHP8
-final class File
+final class File implements Stringable
 {
     /**
      * Realpath
