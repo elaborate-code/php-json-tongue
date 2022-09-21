@@ -38,7 +38,7 @@ final class File implements Stringable
             $this->directoryContent = [];
 
             foreach ($files as $file_name) {
-                $this->directoryContent[$file_name] = realpath($this->path . DIRECTORY_SEPARATOR . $file_name);
+                $this->directoryContent[$file_name] = realpath($this->path.DIRECTORY_SEPARATOR.$file_name);
             }
         }
     }
@@ -69,9 +69,9 @@ final class File implements Stringable
             return;
         }
 
-        $realpath = realpath($this->projectRoot . DIRECTORY_SEPARATOR . $rel_path);
+        $realpath = realpath($this->projectRoot.DIRECTORY_SEPARATOR.$rel_path);
 
-        if (!$realpath) {
+        if (! $realpath) {
             throw new \Exception("Invalid relative path. Can't get absolute path from '$rel_path'!");
         }
 
@@ -87,7 +87,7 @@ final class File implements Stringable
      */
     public function getDirectoryContent(): array
     {
-        if (!$this->isDir()) {
+        if (! $this->isDir()) {
             throw new \Exception("This object isn't a directory");
         }
 
@@ -99,7 +99,7 @@ final class File implements Stringable
      */
     public function getDirectoryJsonContent(): array
     {
-        if (!$this->isDir()) {
+        if (! $this->isDir()) {
             throw new \Exception("This object isn't a directory");
         }
 
