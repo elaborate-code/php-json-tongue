@@ -1,9 +1,38 @@
 <?php
 
+use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 use ElaborateCode\JsonTongue\TongueFacade;
 
 it('complete', function () {
-    $tongue = new TongueFacade('/tests/lang');
+    $this->faker = new JsonFaker([
+        'ar' => [
+            'ar.json' => [],
+        ],
+        'en' => [
+            'en.json' => [
+                "en" => "en",
+                "Super" => "Super"
+            ],
+            'one.json' => [
+                "one" => "one",
+            ],
+            'two.json' => [
+                "two" => "two",
+            ],
+        ],
+        'multi' => [
+            'greetings.json' => [
+                'en' => [
+                    'Hello' => 'Hello',
+                ],
+                'fr' => [
+                    'Hello' => 'Salut',
+                ],
+            ],
+        ],
+    ]);
+
+    $tongue = new TongueFacade('/tests/temp/lang');
 
     $this->assertCount(3, $tongue->transcribe());
     $this->assertArrayHasKey('ar', $tongue->transcribe());

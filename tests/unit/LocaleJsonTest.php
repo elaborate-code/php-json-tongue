@@ -2,9 +2,19 @@
 
 use ElaborateCode\JsonTongue\Composites\LocaleJson;
 use ElaborateCode\JsonTongue\Strategies\File;
+use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 
 it('gets JSON content correctly', function () {
-    $file = new File('/tests/lang/en/en.json');
+    $faker = new JsonFaker([
+        'en' => [
+            'en.json' => [
+                'en' => 'en',
+                'Super' => 'Super',
+            ],
+        ],
+    ]);
+
+    $file = new File('/tests/temp/lang/en/en.json');
 
     $json = new LocaleJson($file);
 
@@ -13,7 +23,20 @@ it('gets JSON content correctly', function () {
 });
 
 it('gets multi JSON content correctly', function () {
-    $file = new File('/tests/lang/multi/greetings.json');
+    $faker = new JsonFaker([
+        'multi' => [
+            'greetings.json' => [
+                'en' => [
+                    'Hello' => 'Hello',
+                ],
+                'fr' => [
+                    'Hello' => 'Salut',
+                ],
+            ],
+        ],
+    ]);
+
+    $file = new File('/tests/temp/lang/multi/greetings.json');
 
     $json = new LocaleJson($file);
 

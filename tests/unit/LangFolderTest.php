@@ -2,14 +2,24 @@
 
 use ElaborateCode\JsonTongue\Composites\LangFolder;
 use ElaborateCode\JsonTongue\Strategies\File;
+use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 
 it('lists available locales correctly', function () {
-    $lang_folder = new LangFolder('/tests/lang');
+    $faker = new JsonFaker([
+        'ar' => [],
+        'en' => [],
+        'es' => [],
+        'fr' => [],
+    ]);
+
+    $lang_folder = new LangFolder('/tests/temp/lang');
 
     $this->assertContains('ar', $lang_folder->getLocalesList());
     $this->assertContains('en', $lang_folder->getLocalesList());
     $this->assertContains('es', $lang_folder->getLocalesList());
     $this->assertContains('fr', $lang_folder->getLocalesList());
+
+    $faker->rollback();
 });
 
 // it('traverses the right amount of locale folders', function () {
