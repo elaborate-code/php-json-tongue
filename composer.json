@@ -52,6 +52,9 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
+        },
+        "platform": {
+            "php": "8.0.0"
         }
     },
     "minimum-stability": "stable",
