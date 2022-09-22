@@ -34,11 +34,20 @@ it('complete', function () {
 
     $tongue = new TongueFacade($this->jsonFaker->getPath());
 
-    $this->assertCount(3, $tongue->transcribe());
-    $this->assertArrayHasKey('ar', $tongue->transcribe());
-    $this->assertArrayHasKey('en', $tongue->transcribe());
-    $this->assertArrayHasKey('fr', $tongue->transcribe());
+    expect($tongue->transcribe())
+        ->toHaveCount(3);
 
-    $this->assertCount(0, $tongue->transcribe()['ar']);
-    $this->assertCount(5, $tongue->transcribe()['en']);
+    expect($tongue->transcribe())
+        ->toHaveKey('ar');
+    expect($tongue->transcribe())
+        ->toHaveKey('en');
+    expect($tongue->transcribe())
+        ->toHaveKey('fr');
+
+    expect($tongue->transcribe()['ar'])
+        ->toHaveCount(0);
+    expect($tongue->transcribe()['en'])
+        ->toHaveCount(5);
+    expect($tongue->transcribe()['fr'])
+        ->toHaveCount(1);
 });

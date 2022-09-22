@@ -13,8 +13,8 @@ it('lists available locales correctly', function () {
 
     $lang_folder = new LangFolder($this->jsonFaker->getPath());
 
-    $this->assertContains('ar', $lang_folder->getLocalesList());
-    $this->assertContains('en', $lang_folder->getLocalesList());
-    $this->assertContains('es', $lang_folder->getLocalesList());
-    $this->assertContains('fr', $lang_folder->getLocalesList());
+    expect($lang_folder->getLocalesList())->toContain('ar');
+    expect($lang_folder->getLocalesList())->toContain('en');
+    expect($lang_folder->getLocalesList())->toContain('es');
+    expect($lang_folder->getLocalesList())->toContain('fr');
 });

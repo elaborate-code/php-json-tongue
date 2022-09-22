@@ -88,7 +88,7 @@ final class File implements Stringable
     public function getDirectoryContent(): array
     {
         if (! $this->isDir()) {
-            throw new \Exception("This object isn't a directory");
+            throw new \Exception('This object isn\'t a directory');
         }
 
         return $this->directoryContent;

@@ -6,20 +6,18 @@ use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 
 it('gets JSON content correctly', function () {
     $this->jsonFaker = JsonFaker::make()
-        ->addLocale('en', [
-            'en.json' => [
-                'en' => 'en',
+        ->addLocale('fr', [
+            'misc.json' => [
+                'view' => 'vue',
                 'Super' => 'Super',
             ],
         ])
         ->write();
 
-    $file = new File($this->jsonFaker->getPath().'/en/en.json');
+    $json = new LocaleJson(new File($this->jsonFaker->getPath().'/fr/misc.json'));
 
-    $json = new LocaleJson($file);
-
-    $this->assertArrayHasKey('en', $json->getContent());
-    $this->assertContains('en', $json->getContent());
+    expect($json->getContent())->toHaveKey('view');
+    expect($json->getContent())->toContain('vue');
 });
 
 it('gets multi JSON content correctly', function () {
@@ -40,10 +38,14 @@ it('gets multi JSON content correctly', function () {
 
     $json = new LocaleJson($file);
 
-    $this->assertCount(2, $json->getContent());
-    $this->assertArrayHasKey('en', $json->getContent());
-    $this->assertArrayHasKey('fr', $json->getContent());
+    expect($json->getContent())->toHaveCount(2);
 
-    $this->assertArrayHasKey('Hello', $json->getContent()['en']);
-    $this->assertArrayHasKey('Hello', $json->getContent()['fr']);
+    expect($json->getContent())->toHaveKey('en');
+    expect($json->getContent())->toHaveKey('fr');
+
+    expect($json->getContent()['en'])->toHaveKey('Hello');
+    expect($json->getContent()['en'])->toContain('Hello');
+
+    expect($json->getContent()['fr'])->toHaveKey('Hello');
+    expect($json->getContent()['fr'])->toContain('Salut');
 });

@@ -15,7 +15,7 @@ it('sets locale lang correctly', function () {
 
     $locale = $factory->make($en);
 
-    $this->assertEquals($locale->getLang(), 'en');
+    expect($locale->getLang())->toBe('en');
 
     // $this->assertFalse($locale->isMulti()); // test instance
 });
@@ -31,5 +31,6 @@ it('assert JsonsList', function () {
 
     $locale = $factory->make($en);
 
-    $this->assertArrayHasKey('en.json', $locale->getJsonsList());
+    expect($locale->getJsonsList())
+        ->toHaveKey('en.json');
 });

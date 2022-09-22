@@ -19,11 +19,11 @@ it('factory gives MultiLocaleFolder when folder is multi', function () {
         ])
         ->write();
 
-    $factory = new LocaleFolderFactory;
+    $multi = (new LocaleFolderFactory)
+        ->make(
+            new File($this->jsonFaker->getPath().'/multi')
+        );
 
-    $multi_folder = new File($this->jsonFaker->getPath().'/multi');
-
-    $multi = $factory->make($multi_folder);
-
-    $this->assertInstanceOf(MultiLocaleFolder::class, $multi);
+    expect($multi)
+        ->toBeInstanceOf(MultiLocaleFolder::class);
 });
