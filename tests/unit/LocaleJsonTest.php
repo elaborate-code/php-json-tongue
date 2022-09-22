@@ -2,9 +2,19 @@
 
 use ElaborateCode\JsonTongue\Composites\LocaleJson;
 use ElaborateCode\JsonTongue\Strategies\File;
+use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 
 it('gets JSON content correctly', function () {
-    $file = new File('/tests/lang/en/en.json');
+    $this->jsonFaker = JsonFaker::make()
+        ->addLocale('en', [
+            'en.json' => [
+                'en' => 'en',
+                'Super' => 'Super',
+            ],
+        ])
+        ->write();
+
+    $file = new File($this->jsonFaker->getPath().'/en/en.json');
 
     $json = new LocaleJson($file);
 
@@ -13,7 +23,20 @@ it('gets JSON content correctly', function () {
 });
 
 it('gets multi JSON content correctly', function () {
-    $file = new File('/tests/lang/multi/greetings.json');
+    $this->jsonFaker = JsonFaker::make()
+        ->addLocale('multi', [
+            'greetings.json' => [
+                'en' => [
+                    'Hello' => 'Hello',
+                ],
+                'fr' => [
+                    'Hello' => 'Salut',
+                ],
+            ],
+        ])
+        ->write();
+
+    $file = new File($this->jsonFaker->getPath().'/multi/greetings.json');
 
     $json = new LocaleJson($file);
 
