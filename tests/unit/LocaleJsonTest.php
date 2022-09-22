@@ -5,14 +5,14 @@ use ElaborateCode\JsonTongue\Strategies\File;
 use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 
 it('gets JSON content correctly', function () {
-    $faker = new JsonFaker([
-        'en' => [
+    $this->jsonFaker = JsonFaker::make()
+        ->addLocale('en', [
             'en.json' => [
                 'en' => 'en',
                 'Super' => 'Super',
             ],
-        ],
-    ]);
+        ])
+        ->write();
 
     $file = new File('/tests/temp/lang/en/en.json');
 
@@ -23,8 +23,8 @@ it('gets JSON content correctly', function () {
 });
 
 it('gets multi JSON content correctly', function () {
-    $faker = new JsonFaker([
-        'multi' => [
+    $this->jsonFaker = JsonFaker::make()
+        ->addLocale('multi', [
             'greetings.json' => [
                 'en' => [
                     'Hello' => 'Hello',
@@ -33,8 +33,8 @@ it('gets multi JSON content correctly', function () {
                     'Hello' => 'Salut',
                 ],
             ],
-        ],
-    ]);
+        ])
+        ->write();
 
     $file = new File('/tests/temp/lang/multi/greetings.json');
 

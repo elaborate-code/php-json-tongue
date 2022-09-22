@@ -6,8 +6,8 @@ use ElaborateCode\JsonTongue\Strategies\File;
 use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 
 it('factory gives MultiLocaleFolder when folder is multi', function () {
-    $faker = new JsonFaker([
-        'multi' => [
+    $this->jsonFaker = JsonFaker::make()
+        ->addLocale('multi', [
             'greetings.json' => [
                 'en' => [
                     'Hello' => 'Hello',
@@ -16,8 +16,8 @@ it('factory gives MultiLocaleFolder when folder is multi', function () {
                     'Hello' => 'Salut',
                 ],
             ],
-        ],
-    ]);
+        ])
+        ->write();
 
     $factory = new LocaleFolderFactory;
 

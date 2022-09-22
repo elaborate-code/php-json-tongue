@@ -4,11 +4,11 @@ use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 use ElaborateCode\JsonTongue\TongueFacade;
 
 it('complete', function () {
-    $this->faker = new JsonFaker([
-        'ar' => [
+    $this->jsonFaker = JsonFaker::make()
+        ->addLocale('ar', [
             'ar.json' => [],
-        ],
-        'en' => [
+        ])
+        ->addLocale('en', [
             'en.json' => [
                 'en' => 'en',
                 'Super' => 'Super',
@@ -19,8 +19,8 @@ it('complete', function () {
             'two.json' => [
                 'two' => 'two',
             ],
-        ],
-        'multi' => [
+        ])
+        ->addLocale('multi', [
             'greetings.json' => [
                 'en' => [
                     'Hello' => 'Hello',
@@ -29,8 +29,8 @@ it('complete', function () {
                     'Hello' => 'Salut',
                 ],
             ],
-        ],
-    ]);
+        ])
+        ->write();
 
     $tongue = new TongueFacade('/tests/temp/lang');
 

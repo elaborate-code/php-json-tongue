@@ -1,14 +1,13 @@
 <?php
 
-use ElaborateCode\JsonTongue\Composites\LocaleFolder;
 use ElaborateCode\JsonTongue\Factories\LocaleFolderFactory;
 use ElaborateCode\JsonTongue\Strategies\File;
 use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 
 it('sets locale lang correctly', function () {
-    $faker = new JsonFaker([
-        'en' => [],
-    ]);
+    $this->jsonFaker = JsonFaker::make()
+        ->addLocale('en', [])
+        ->write();
 
     $factory = new LocaleFolderFactory;
 
@@ -22,11 +21,9 @@ it('sets locale lang correctly', function () {
 });
 
 it('assert JsonsList', function () {
-    $faker = new JsonFaker([
-        'en' => [
-            'en.json' => [],
-        ],
-    ]);
+    $this->jsonFaker = JsonFaker::make()
+        ->addLocale('en', ['en.json' => []])
+        ->write();
 
     $factory = new LocaleFolderFactory;
 
@@ -36,14 +33,3 @@ it('assert JsonsList', function () {
 
     $this->assertArrayHasKey('en.json', $locale->getJsonsList());
 });
-
-// it('traverses the right amount of locale JSONs', function () {
-//     $lang_folder = new LocaleFolder(new File('/tests/lang/en'));
-
-//     $jsons_counter = 0;
-//     foreach ($lang_folder as $json_name => $locale_folder) {
-//         $jsons_counter++;
-//     }
-
-//     $this->assertEquals(3, $jsons_counter);
-// });
