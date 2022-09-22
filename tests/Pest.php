@@ -6,4 +6,4 @@ uses()
             $this->jsonFaker->rollback();
         }
     })
-    ->in('Feature', 'Unit');
+    ->in('feature', 'unit');
