@@ -6,6 +6,15 @@
  */
 function is_json(string $path): bool
 {
-    // TODO: tell if $this is JSON when $path is_null
     return strcmp(strtolower(substr($path, -5)), '.json') === 0;
+}
+
+function rm_tree($dir): bool
+{
+    $files = array_diff(scandir($dir), ['.', '..']);
+    foreach ($files as $file) {
+        (is_dir("$dir/$file")) ? rm_tree("$dir/$file") : unlink("$dir/$file");
+    }
+
+    return rmdir($dir);
 }

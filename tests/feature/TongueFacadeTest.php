@@ -32,7 +32,7 @@ it('complete', function () {
         ])
         ->write();
 
-    $tongue = new TongueFacade('/tests/temp/lang');
+    $tongue = new TongueFacade($this->jsonFaker->getPath());
 
     $this->assertCount(3, $tongue->transcribe());
     $this->assertArrayHasKey('ar', $tongue->transcribe());

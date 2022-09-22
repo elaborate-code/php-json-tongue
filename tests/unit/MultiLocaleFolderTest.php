@@ -21,7 +21,7 @@ it('factory gives MultiLocaleFolder when folder is multi', function () {
 
     $factory = new LocaleFolderFactory;
 
-    $multi_folder = new File('/tests/temp/lang/multi');
+    $multi_folder = new File($this->jsonFaker->getPath().'/multi');
 
     $multi = $factory->make($multi_folder);
 

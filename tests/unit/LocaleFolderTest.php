@@ -11,7 +11,7 @@ it('sets locale lang correctly', function () {
 
     $factory = new LocaleFolderFactory;
 
-    $en = new File('/tests/temp/lang/en');
+    $en = new File($this->jsonFaker->getPath().'/en');
 
     $locale = $factory->make($en);
 
@@ -27,7 +27,7 @@ it('assert JsonsList', function () {
 
     $factory = new LocaleFolderFactory;
 
-    $en = new File('/tests/temp/lang/en');
+    $en = new File($this->jsonFaker->getPath().'/en');
 
     $locale = $factory->make($en);
 

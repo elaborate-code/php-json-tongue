@@ -11,7 +11,7 @@ it('lists available locales correctly', function () {
         ->addLocale('fr', [])
         ->write();
 
-    $lang_folder = new LangFolder('/tests/temp/lang');
+    $lang_folder = new LangFolder($this->jsonFaker->getPath());
 
     $this->assertContains('ar', $lang_folder->getLocalesList());
     $this->assertContains('en', $lang_folder->getLocalesList());

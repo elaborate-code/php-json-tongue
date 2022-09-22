@@ -14,7 +14,7 @@ it('gets JSON content correctly', function () {
         ])
         ->write();
 
-    $file = new File('/tests/temp/lang/en/en.json');
+    $file = new File($this->jsonFaker->getPath().'/en/en.json');
 
     $json = new LocaleJson($file);
 
@@ -36,7 +36,7 @@ it('gets multi JSON content correctly', function () {
         ])
         ->write();
 
-    $file = new File('/tests/temp/lang/multi/greetings.json');
+    $file = new File($this->jsonFaker->getPath().'/multi/greetings.json');
 
     $json = new LocaleJson($file);
 
