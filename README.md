@@ -16,17 +16,21 @@ composer require elaborate-code/php-json-tongue
 
 ## Usage
 
-Set the file structure
+Set the file structure.
 
 ![illustration](illustration.png)
 
-Then use the facade
+Then use the facade.
 
 ```php
 use ElaborateCode\JsonTongue\TongueFacade;
 
 $tongue = new TongueFacade('/lang');
 
-$tongue->transcribe();
+$localization = $tongue->transcribe();
 ```
+
+`$localization` will look like:
+
+![transcribed](transcribed.png)
 

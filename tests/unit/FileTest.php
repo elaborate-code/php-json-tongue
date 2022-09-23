@@ -2,14 +2,11 @@
 
 use ElaborateCode\JsonTongue\Strategies\File;
 
-it('gets correct project root path', function () {
-    $root_folder = new File;
+test('getProjectRoot')
+    ->expect(fn () => (new File)->getProjectRoot())
+    ->toBe(realpath(__DIR__.'/../../'));
 
-    expect($root_folder->getProjectRoot())
-        ->toBe(realpath(__DIR__.'/../../'));
-});
-
-it('gets correct tests folder path', function () {
+test('getPath', function () {
     expect((string) new File('tests'))
         ->toBe(realpath(__DIR__.'/../'));
 
@@ -21,12 +18,12 @@ it('gets correct tests folder path', function () {
         ->toBe(realpath(__DIR__.'/../'));
 });
 
-it('throws an exception when relative path is invalid', function () {
+it('throws an exception when $rel_path is invalid', function () {
     expect(fn () => new File('i want some fruits'))
         ->toThrow(\Exception::class, "Invalid relative path. Can't get absolute path from 'i want some fruits'!");
 });
 
-it('scans directories', function () {
+test('getDirectoryContent', function () {
     $dir = new File();
 
     expect($dir->getDirectoryContent())

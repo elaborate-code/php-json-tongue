@@ -11,7 +11,7 @@ it('complete', function () {
         ->addLocale('en', [
             'en.json' => [
                 'en' => 'en',
-                'Super' => 'Super',
+                "I know. They're both good. It's hard to decide. McCain is older but he has more experience. Obama seems to have a lot of good ideas, but some people say he wants to raise taxes." => 'Lo sé. Ambos son buenos. Es difícil decidir. McCain es mayor pero tiene más experiencia. Obama parece tener muchas buenas ideas, pero algunas personas dicen que quiere aumentar los impuestos.',
             ],
             'one.json' => [
                 'one' => 'one',
