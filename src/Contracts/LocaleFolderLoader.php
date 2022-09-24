@@ -21,7 +21,7 @@ abstract class LocaleFolderLoader
     public function __construct(string $abs_path)
     {
         if (! realpath($abs_path) || ! is_dir($abs_path)) {
-            throw new Exception("Invalid absolute folder path '$abs_path' on LocaleFolder instantiation");
+            throw new Exception("Invalid absolute folder path $abs_path on LocaleFolder instantiation");
         }
 
         // ! IOC
@@ -72,5 +72,13 @@ abstract class LocaleFolderLoader
     public function getJsonsList(): array
     {
         return $this->directory->getDirectoryJsonContent();
+    }
+
+    /**
+     * @return array<LocaleJsonLoader> 'JSON_name' => 'LocaleJsonLoader'
+     */
+    public function getLocaleJsonLoadersCollection(): array
+    {
+        return $this->localeJsonLoadersCollection;
     }
 }

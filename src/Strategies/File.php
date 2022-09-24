@@ -2,6 +2,7 @@
 
 namespace ElaborateCode\JsonTongue\Strategies;
 
+use Exception;
 use Stringable;
 
 final class File implements Stringable
@@ -23,11 +24,14 @@ final class File implements Stringable
      */
     protected array $directoryContent;
 
-    public function __construct(string $rel_path = '')
+    /**
+     * @param  string  $path an absolute path or a path starting from the project root
+     */
+    public function __construct(string $path = '')
     {
         $this->setProjectRoot();
 
-        $this->setPath($rel_path);
+        $this->setPath($path);
 
         $this->isDir = is_dir($this->path);
 
@@ -59,9 +63,9 @@ final class File implements Stringable
         $this->projectRoot = realpath(dirname($reflection->getFileName(), 3));
     }
 
-    protected function setPath(string $rel_path): void
+    protected function setPath(string $path): void
     {
-        $is_valid_abs_path = realpath($rel_path);
+        $is_valid_abs_path = realpath($path);
 
         if ($is_valid_abs_path) {
             $this->path = $is_valid_abs_path;
@@ -69,10 +73,10 @@ final class File implements Stringable
             return;
         }
 
-        $realpath = realpath($this->projectRoot.DIRECTORY_SEPARATOR.$rel_path);
+        $realpath = realpath($this->getProjectRoot().DIRECTORY_SEPARATOR.$path);
 
         if (! $realpath) {
-            throw new \Exception("Invalid relative path. Can't get absolute path from '$rel_path'!");
+            throw new Exception("Invalid relative path. Can't get absolute path from '$path'!");
         }
 
         $this->path = $realpath;
@@ -88,7 +92,7 @@ final class File implements Stringable
     public function getDirectoryContent(): array
     {
         if (! $this->isDir()) {
-            throw new \Exception('This object isn\'t a directory');
+            throw new Exception('This object isn\'t a directory');
         }
 
         return $this->directoryContent;
@@ -100,7 +104,7 @@ final class File implements Stringable
     public function getDirectoryJsonContent(): array
     {
         if (! $this->isDir()) {
-            throw new \Exception("This object isn't a directory");
+            throw new Exception("This object isn't a directory");
         }
 
         return array_filter(

@@ -14,8 +14,8 @@ final class LocaleJson implements LocaleJsonLoader
 
     public function __construct(string $abs_path)
     {
-        if (! realpath($abs_path)) {
-            throw new Exception("Invalid absolute JSON path '$abs_path' on LocaleFolder instantiation");
+        if (! realpath($abs_path) || ! is_json($abs_path)) {
+            throw new Exception("Invalid absolute JSON path $abs_path on LocaleJson instantiation");
         }
 
         // ! IOC
@@ -35,5 +35,14 @@ final class LocaleJson implements LocaleJsonLoader
     public function getContent(): array
     {
         return $this->content;
+    }
+
+    /**
+     * Helps testing
+     * TODO: support param like key.subkey.subsubkey...
+     */
+    public function key(string $key): string|array
+    {
+        return $this->content[$key];
     }
 }

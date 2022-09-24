@@ -34,4 +34,13 @@ final class TongueFacade
     {
         return $this->localizationRepo->getTranslations();
     }
+
+    /**
+     * @return array<string>
+     */
+    public function transcribeLang(string $lang): array
+    {
+        // TODO: throw exceptio if lang not found ?
+        return $this->localizationRepo->getTranslations()[$lang];
+    }
 }
