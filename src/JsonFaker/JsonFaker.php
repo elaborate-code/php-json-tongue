@@ -2,10 +2,11 @@
 
 namespace ElaborateCode\JsonTongue\JsonFaker;
 
+use ElaborateCode\JsonTongue\Contracts\JsonFakerContract;
 use ElaborateCode\JsonTongue\Strategies\File;
 use Exception;
 
-class JsonFaker
+class JsonFaker implements JsonFakerContract
 {
     protected string $testingPath;
 
