@@ -2,8 +2,6 @@
 
 use ElaborateCode\JsonTongue\Concerns\TraversableAssocArray;
 
-
-
 it('traverses', function () {
     $obj = new class
     {
