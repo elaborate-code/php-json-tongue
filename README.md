@@ -2,9 +2,10 @@
 
 [![Packagist Version](https://img.shields.io/packagist/v/elaborate-code/php-json-tongue?label=Version&style=plastic)](https://packagist.org/packages/elaborate-code/php-json-tongue)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/elaborate-code/php-json-tongue?label=Downloads&style=plastic)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/elaborate-code/php-json-tongue/run-tests?label=Tests)](https://github.com/elaborate-code/php-json-tongue/actions/workflows/run-tests.yml)
+[![run-tests](https://github.com/elaborate-code/php-json-tongue/actions/workflows/run-tests.yml/badge.svg)](https://github.com/elaborate-code/php-json-tongue/actions/workflows/run-tests.yml)
 ![Test Coverage](https://raw.githubusercontent.com/elaborate-code/php-json-tongue/main/badge-coverage.svg)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/elaborate-code/php-json-tongue/Fix%20PHP%20code%20style%20issues?label=Code%20Style)](https://github.com/elaborate-code/php-json-tongue/actions/workflows/fix-php-code-style-issues.yml)
+<!-- [![Fix PHP code style issues](https://github.com/elaborate-code/php-json-tongue/actions/workflows/fix-php-code-style-issues.yml/badge.svg)](https://github.com/elaborate-code/php-json-tongue/actions/workflows/fix-php-code-style-issues.yml) -->
 
 
 A Facade for loading localization data from JSONs within a lang folder
