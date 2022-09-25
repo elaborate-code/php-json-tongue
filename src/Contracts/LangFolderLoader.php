@@ -2,8 +2,6 @@
 
 namespace ElaborateCode\JsonTongue\Contracts;
 
-use ElaborateCode\JsonTongue\LocalizationRepository;
-
 interface LangFolderLoader
 {
     /**

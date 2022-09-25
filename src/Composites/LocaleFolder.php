@@ -3,7 +3,7 @@
 namespace ElaborateCode\JsonTongue\Composites;
 
 use ElaborateCode\JsonTongue\Contracts\LocaleFolderLoader;
-use ElaborateCode\JsonTongue\LocalizationRepository;
+use ElaborateCode\JsonTongue\Contracts\LocalizationRepository;
 
 final class LocaleFolder extends LocaleFolderLoader
 {

@@ -2,7 +2,9 @@
 
 namespace ElaborateCode\JsonTongue;
 
-final class LocalizationRepository
+use ElaborateCode\JsonTongue\Contracts\LocalizationRepository as LocalizationRepositoryContract;
+
+final class LocalizationRepository implements LocalizationRepositoryContract
 {
     protected array $translations = [];
 

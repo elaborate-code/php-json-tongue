@@ -3,7 +3,6 @@
 namespace ElaborateCode\JsonTongue\Contracts;
 
 use ElaborateCode\JsonTongue\Composites\LocaleJson;
-use ElaborateCode\JsonTongue\LocalizationRepository;
 use ElaborateCode\JsonTongue\Strategies\File;
 use Exception;
 
