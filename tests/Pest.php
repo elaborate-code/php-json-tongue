@@ -5,5 +5,6 @@ uses()
         if (isset($this->jsonFaker)) {
             $this->jsonFaker->rollback();
         }
+        unset($this->jsonFaker);
     })
     ->in('feature', 'unit');

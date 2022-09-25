@@ -21,7 +21,18 @@ final class LocaleJson implements LocaleJsonLoader
         // ! IOC
         $this->json = new File($abs_path);
 
-        // TODO: It is possible to throw an exception when a JSON is empty or invalid
+        $this->setContent();
+    }
+
+    /**
+     * Sets an empty array if file is:
+     * - Decoded and Empty
+     * - Cannot be decoded
+     *
+     * ? Throw an exception when sets empty
+     */
+    protected function setContent(): void
+    {
         $this->content = json_decode(file_get_contents($this->json->getPath()), true) ?? [];
     }
 
@@ -39,7 +50,8 @@ final class LocaleJson implements LocaleJsonLoader
 
     /**
      * Helps testing
-     * TODO: support param like key.subkey.subsubkey...
+     *
+     * TODO: support param like key/subkey/subsubkey/...
      */
     public function key(string $key): string|array
     {

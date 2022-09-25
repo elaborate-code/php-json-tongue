@@ -54,4 +54,29 @@ it('gets multi JSON content correctly')
     ->key('fr')->toHaveKey('Hello')
     ->key('fr')->toContain('Salut');
 
-test('handle JSON content is empty or invalid');
+it('decodes an empty JSON')
+    ->expect(function () {
+        $this->jsonFaker = JsonFaker::make()
+            ->addLocale('fr', [
+                'empty.json' => [],
+            ])
+            ->write();
+
+        return new LocaleJson(new File($this->jsonFaker->getPath().'/fr/empty.json'));
+    })
+    ->getContent()->toHaveCount(0);
+
+it('gives empty content when JSON cannot be decoded')
+    ->expect(function () {
+        $this->jsonFaker = JsonFaker::make()
+            ->addLocale('fr', [
+                'invalid.json' => [],
+            ])
+            ->write();
+
+        // Spoil the content
+        file_put_contents($this->jsonFaker->getPath().'/fr/invalid.json', 'invalid');
+
+        return new LocaleJson(new File($this->jsonFaker->getPath().'/fr/invalid.json'));
+    })
+    ->getContent()->toHaveCount(0);

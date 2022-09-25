@@ -6,7 +6,7 @@ use ElaborateCode\JsonTongue\Factories\LocaleFolderFactory;
 use ElaborateCode\JsonTongue\Strategies\File;
 use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 
-it('throws an exception when path is not a valide folder')
+it('throws an exception when path is not a valid folder')
     ->expect(fn () => (new LocaleFolderFactory)->make(__FILE__))
     ->throws(Exception::class, 'Invalid absolute folder path '.__FILE__.' on LocaleFolder instantiation');
 
