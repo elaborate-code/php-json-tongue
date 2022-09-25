@@ -4,11 +4,11 @@ use ElaborateCode\JsonTongue\Strategies\File;
 
 test('getProjectRoot')
     ->expect((new File)->getProjectRoot())
-    ->toBe(realpath(__DIR__.'/../../'));
+    ->toBe(realpath(__DIR__ . '/../../../'));
 
 it('constructs with project root path by default')
     ->expect((new File)->getPath())
-    ->toBe(realpath(__DIR__.'/../../'));
+    ->toBe(realpath(__DIR__ . '/../../../'));
 
 it('constructs with given valid absolute paths')
     ->expect([
@@ -43,11 +43,11 @@ test('getPath & __toString')
     ->expect([
         (new File('tests'))->getPath(),
         (string) new File('/tests'),
-        (string) new File(DIRECTORY_SEPARATOR.'tests'),
+        (string) new File(DIRECTORY_SEPARATOR . 'tests'),
         // Can test '\test' on windows
     ])
     ->each
-    ->toBe(realpath(__DIR__.'/..'));
+    ->toBe(realpath(__DIR__ . '/../..'));
 
 test('isDir')
     ->expect((new File(__DIR__))->isDir())
@@ -57,10 +57,10 @@ test('isDir')
 
 test('getDirectoryContent')
     ->expect((new File())->getDirectoryContent())
-    ->toContain(realpath(__DIR__.'/../../composer.json'))
-    ->toContain(realpath(__DIR__.'/../../src'))
-    ->toContain(realpath(__DIR__.'/../../tests'))
-    ->toContain(realpath(__DIR__.'/../../vendor'));
+    ->toContain(realpath(__DIR__ . '/../../../composer.json'))
+    ->toContain(realpath(__DIR__ . '/../../../src'))
+    ->toContain(realpath(__DIR__ . '/../../../tests'))
+    ->toContain(realpath(__DIR__ . '/../../../vendor'));
 
 it('throws an exception for calling getDirectoryContent on a file')
     ->expect(fn () => (new File('composer.json'))->getDirectoryContent())
@@ -69,7 +69,7 @@ it('throws an exception for calling getDirectoryContent on a file')
 test('getDirectoryJsonContent')
     ->expect((new File())->getDirectoryJsonContent())
     ->toHaveCount(1)
-    ->toContain(realpath(__DIR__.'/../../composer.json'));
+    ->toContain(realpath(__DIR__ . '/../../../composer.json'));
 
 it('throws an exception for calling getDirectoryJsonContent on a file')
     ->expect(fn () => (new File('composer.json'))->getDirectoryJsonContent())
