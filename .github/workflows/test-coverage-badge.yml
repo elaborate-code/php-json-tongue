@@ -1,10 +1,6 @@
 name: test-coverage-badge
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+on: workflow_dispatch
 
 jobs:
   test:
@@ -36,6 +32,9 @@ jobs:
       - name: Generate test coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.0
         with:
-          coverage_badge_path: 'badge-coverage.svg'
+          coverage_badge_path: "badge-coverage.svg"
           push_badge: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: remove clover.xml
+        run: rm clover.xml

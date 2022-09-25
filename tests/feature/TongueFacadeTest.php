@@ -3,7 +3,7 @@
 use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 use ElaborateCode\JsonTongue\TongueFacade;
 
-it('complete')
+it('trascribes')
     ->expect(function () {
         $this->jsonFaker = JsonFaker::make()
             ->addLocale('ar', [
