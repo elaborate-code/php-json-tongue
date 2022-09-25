@@ -1,6 +1,6 @@
 <?php
 
-use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
+use ElaborateCode\JsonTongue\JsonFaker\JsonFaker;
 use ElaborateCode\JsonTongue\TongueFacade;
 
 it('trascribes')

@@ -2,7 +2,7 @@
 
 namespace ElaborateCode\JsonTongue\Contracts;
 
-interface LocalizationRepository
+interface LocalizationRepositoryContract
 {
     public function merge(string $lang, array $translations): void;
 

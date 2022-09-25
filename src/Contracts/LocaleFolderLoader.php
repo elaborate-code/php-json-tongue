@@ -35,7 +35,7 @@ abstract class LocaleFolderLoader
     //          Interface
     /* =================================== */
 
-    abstract public function loadTranslations(LocalizationRepository $localization_repo): void;
+    abstract public function loadTranslations(LocalizationRepositoryContract $localization_repo): void;
 
     /* =================================== */
     //          Setters

@@ -59,6 +59,50 @@ $localization = [
 vendor/bin/pest
 ```
 
+### JSON Faker
+
+Just like when testing Laravel apps, we populate the database temporarily and use the `RefreshDatabase` trait to rollback the database to its fresh state.
+
+This package ships with `ElaborateCode\JsonTongue\JsonFaker\JsonFaker` class that helps create a temporary tree of **locale folders** and **JSON files** filled with translations.
+
+Here is an example:
+
+```php
+$json_faker = JsonFaker::make()
+    ->addLocale('ar', [
+        'ar.json' => [],
+    ])
+    ->addLocale('en', [
+        'en.json' => [
+            'en' => 'en',
+            "I know. They're both good. It's hard to decide. McCain is older but he has more experience. Obama seems to have a lot of good ideas, but some people say he wants to raise taxes." => 'Lo sé. Ambos son buenos. Es difícil decidir. McCain es mayor pero tiene más experiencia. Obama parece tener muchas buenas ideas, pero algunas personas dicen que quiere aumentar los impuestos.',
+        ],
+        'one.json' => [
+            'one' => 'one',
+        ],
+        'two.json' => [
+            'two' => 'two',
+        ],
+    ])
+    ->addLocale('multi', [
+        'greetings.json' => [
+            'en' => [
+                'Hello' => 'Hello',
+            ],
+            'fr' => [
+                'Hello' => 'Salut',
+            ],
+        ],
+    ])
+    ->write();
+
+// Assert
+
+$json_faker->rollback(); // Delete the complete file structure created for the test
+```
+
+> This class can help make tests when contributing on this package or when using this package.
+
 ## Changelog
 
 <!-- Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently. -->

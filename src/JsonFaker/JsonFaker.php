@@ -1,6 +1,6 @@
 <?php
 
-namespace ElaborateCode\JsonTongue\Tests\JsonFaker;
+namespace ElaborateCode\JsonTongue\JsonFaker;
 
 use ElaborateCode\JsonTongue\Strategies\File;
 use Exception;

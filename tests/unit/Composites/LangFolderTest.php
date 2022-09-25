@@ -3,7 +3,7 @@
 use ElaborateCode\JsonTongue\Composites\LangFolder;
 use ElaborateCode\JsonTongue\Contracts\LangFolderLoader;
 use ElaborateCode\JsonTongue\Contracts\LocaleFolderLoader;
-use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
+use ElaborateCode\JsonTongue\JsonFaker\JsonFaker;
 
 it('lists available locales correctly')
     ->expect(function () {

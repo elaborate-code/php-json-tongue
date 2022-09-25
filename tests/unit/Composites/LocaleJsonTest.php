@@ -1,8 +1,8 @@
 <?php
 
 use ElaborateCode\JsonTongue\Composites\LocaleJson;
+use ElaborateCode\JsonTongue\JsonFaker\JsonFaker;
 use ElaborateCode\JsonTongue\Strategies\File;
-use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 
 it('throws an exception when path is not a valid JSON')
     ->expect(fn () => new LocaleJson(__FILE__))

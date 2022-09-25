@@ -4,8 +4,8 @@ use ElaborateCode\JsonTongue\Composites\LocaleFolder;
 use ElaborateCode\JsonTongue\Composites\MultiLocaleFolder;
 use ElaborateCode\JsonTongue\Contracts\LocaleFolderLoader;
 use ElaborateCode\JsonTongue\Factories\LocaleFolderFactory;
+use ElaborateCode\JsonTongue\JsonFaker\JsonFaker;
 use ElaborateCode\JsonTongue\Strategies\File;
-use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 
 it('factorise the right interface')
     ->expect(fn () => (new LocaleFolderFactory)->make(__DIR__))

@@ -2,7 +2,7 @@
 
 namespace ElaborateCode\JsonTongue;
 
-use ElaborateCode\JsonTongue\Contracts\LocalizationRepository as LocalizationRepositoryContract;
+use ElaborateCode\JsonTongue\Contracts\LocalizationRepositoryContract;
 
 final class LocalizationRepository implements LocalizationRepositoryContract
 {

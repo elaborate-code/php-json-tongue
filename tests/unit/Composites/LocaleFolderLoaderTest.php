@@ -3,8 +3,8 @@
 use ElaborateCode\JsonTongue\Composites\LocaleJson;
 use ElaborateCode\JsonTongue\Contracts\LocaleJsonLoader;
 use ElaborateCode\JsonTongue\Factories\LocaleFolderFactory;
+use ElaborateCode\JsonTongue\JsonFaker\JsonFaker;
 use ElaborateCode\JsonTongue\Strategies\File;
-use ElaborateCode\JsonTongue\Tests\JsonFaker\JsonFaker;
 
 it('throws an exception when path is not a valid folder')
     ->expect(fn () => (new LocaleFolderFactory)->make(__FILE__))

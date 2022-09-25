@@ -36,11 +36,6 @@
             "ElaborateCode\\JsonTongue\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "ElaborateCode\\JsonTongue\\Tests\\JsonFaker\\": "tests/JsonFaker"
-        }
-    },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
