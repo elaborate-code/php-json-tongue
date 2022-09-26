@@ -1,9 +1,9 @@
 <?php
 
-namespace ElaborateCode\JsonTongue\Composites;
+namespace ElaborateCode\JsonTongue\LocaleFolder;
 
-use ElaborateCode\JsonTongue\Contracts\LocaleFolderLoader;
-use ElaborateCode\JsonTongue\Contracts\LocalizationRepositoryContract;
+use ElaborateCode\JsonTongue\LocaleFolder\Abstracts\LocaleFolderLoader;
+use ElaborateCode\JsonTongue\LocalizationRepository\Contracts\LocalizationRepositoryContract;
 
 final class LocaleFolder extends LocaleFolderLoader
 {

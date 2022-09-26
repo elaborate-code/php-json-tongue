@@ -1,8 +1,8 @@
 <?php
 
-namespace ElaborateCode\JsonTongue;
+namespace ElaborateCode\JsonTongue\LocalizationRepository;
 
-use ElaborateCode\JsonTongue\Contracts\LocalizationRepositoryContract;
+use ElaborateCode\JsonTongue\LocalizationRepository\Contracts\LocalizationRepositoryContract;
 
 final class LocalizationRepository implements LocalizationRepositoryContract
 {

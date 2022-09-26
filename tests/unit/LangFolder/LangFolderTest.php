@@ -1,9 +1,9 @@
 <?php
 
-use ElaborateCode\JsonTongue\Composites\LangFolder;
-use ElaborateCode\JsonTongue\Contracts\LangFolderLoader;
-use ElaborateCode\JsonTongue\Contracts\LocaleFolderLoader;
 use ElaborateCode\JsonTongue\JsonFaker\JsonFaker;
+use ElaborateCode\JsonTongue\LangFolder\Contracts\LangFolderLoader;
+use ElaborateCode\JsonTongue\LangFolder\LangFolder;
+use ElaborateCode\JsonTongue\LocaleFolder\Abstracts\LocaleFolderLoader;
 
 it('lists available locales correctly')
     ->expect(function () {

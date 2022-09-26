@@ -1,8 +1,8 @@
 <?php
 
-namespace ElaborateCode\JsonTongue\Composites;
+namespace ElaborateCode\JsonTongue\LocaleJson;
 
-use ElaborateCode\JsonTongue\Contracts\LocaleJsonLoader;
+use ElaborateCode\JsonTongue\LocaleJson\Contracts\LocaleJsonLoader;
 use ElaborateCode\JsonTongue\Strategies\File;
 use Exception;
 

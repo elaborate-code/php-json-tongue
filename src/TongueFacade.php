@@ -2,14 +2,16 @@
 
 namespace ElaborateCode\JsonTongue;
 
-use ElaborateCode\JsonTongue\Composites\LangFolder;
-use ElaborateCode\JsonTongue\Contracts\LangFolderLoader;
+use ElaborateCode\JsonTongue\LangFolder\Contracts\LangFolderLoader;
+use ElaborateCode\JsonTongue\LangFolder\LangFolder;
+use ElaborateCode\JsonTongue\LocalizationRepository\Contracts\LocalizationRepositoryContract;
+use ElaborateCode\JsonTongue\LocalizationRepository\LocalizationRepository;
 
 final class TongueFacade
 {
     protected LangFolderLoader $langLoader;
 
-    protected LocalizationRepository $localizationRepo;
+    protected LocalizationRepositoryContract $localizationRepo;
 
     public function __construct(string $path = '/lang')
     {

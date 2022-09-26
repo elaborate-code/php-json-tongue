@@ -2,7 +2,7 @@
 
 namespace ElaborateCode\JsonTongue\JsonFaker;
 
-use ElaborateCode\JsonTongue\Contracts\JsonFakerContract;
+use ElaborateCode\JsonTongue\JsonFaker\Contracts\JsonFakerContract;
 use ElaborateCode\JsonTongue\Strategies\File;
 use Exception;
 

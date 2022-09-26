@@ -1,7 +1,7 @@
 <?php
 
-use ElaborateCode\JsonTongue\Composites\LocaleJson;
 use ElaborateCode\JsonTongue\JsonFaker\JsonFaker;
+use ElaborateCode\JsonTongue\LocaleJson\LocaleJson;
 use ElaborateCode\JsonTongue\Strategies\File;
 
 it('throws an exception when path is not a valid JSON')

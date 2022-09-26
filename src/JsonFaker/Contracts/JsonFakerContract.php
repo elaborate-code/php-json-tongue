@@ -1,6 +1,6 @@
 <?php
 
-namespace ElaborateCode\JsonTongue\Contracts;
+namespace ElaborateCode\JsonTongue\JsonFaker\Contracts;
 
 interface JsonFakerContract
 {

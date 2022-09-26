@@ -1,6 +1,6 @@
 <?php
 
-namespace ElaborateCode\JsonTongue\Contracts;
+namespace ElaborateCode\JsonTongue\LocalizationRepository\Contracts;
 
 interface LocalizationRepositoryContract
 {

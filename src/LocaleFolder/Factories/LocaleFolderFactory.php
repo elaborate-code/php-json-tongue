@@ -1,10 +1,10 @@
 <?php
 
-namespace ElaborateCode\JsonTongue\Factories;
+namespace ElaborateCode\JsonTongue\LocaleFolder\Factories;
 
-use ElaborateCode\JsonTongue\Composites\LocaleFolder;
-use ElaborateCode\JsonTongue\Composites\MultiLocaleFolder;
-use ElaborateCode\JsonTongue\Contracts\LocaleFolderLoader;
+use ElaborateCode\JsonTongue\LocaleFolder\Abstracts\LocaleFolderLoader;
+use ElaborateCode\JsonTongue\LocaleFolder\LocaleFolder;
+use ElaborateCode\JsonTongue\LocaleFolder\MultiLocaleFolder;
 
 final class LocaleFolderFactory
 {

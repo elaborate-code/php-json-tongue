@@ -1,6 +1,8 @@
 <?php
 
-namespace ElaborateCode\JsonTongue\Contracts;
+namespace ElaborateCode\JsonTongue\LangFolder\Contracts;
+
+use ElaborateCode\JsonTongue\LocalizationRepository\Contracts\LocalizationRepositoryContract;
 
 interface LangFolderLoader
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace ElaborateCode\JsonTongue\Composites;
+namespace ElaborateCode\JsonTongue\LangFolder;
 
-use ElaborateCode\JsonTongue\Contracts\LangFolderLoader;
-use ElaborateCode\JsonTongue\Contracts\LocaleFolderLoader;
-use ElaborateCode\JsonTongue\Contracts\LocalizationRepositoryContract;
-use ElaborateCode\JsonTongue\Factories\LocaleFolderFactory;
+use ElaborateCode\JsonTongue\LangFolder\Contracts\LangFolderLoader;
+use ElaborateCode\JsonTongue\LocaleFolder\Abstracts\LocaleFolderLoader;
+use ElaborateCode\JsonTongue\LocaleFolder\Factories\LocaleFolderFactory;
+use ElaborateCode\JsonTongue\LocalizationRepository\Contracts\LocalizationRepositoryContract;
 use ElaborateCode\JsonTongue\Strategies\File;
 
 final class LangFolder implements LangFolderLoader
