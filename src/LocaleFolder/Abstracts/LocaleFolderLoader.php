@@ -2,6 +2,7 @@
 
 namespace ElaborateCode\JsonTongue\LocaleFolder\Abstracts;
 
+use ElaborateCode\JsonTongue\LocaleJson\Contracts\LocaleJsonLoader;
 use ElaborateCode\JsonTongue\LocaleJson\LocaleJson;
 use ElaborateCode\JsonTongue\LocalizationRepository\Contracts\LocalizationRepositoryContract;
 use ElaborateCode\JsonTongue\Strategies\File;

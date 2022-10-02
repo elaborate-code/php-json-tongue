@@ -5,17 +5,24 @@
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/elaborate-code/php-json-tongue/run-tests?label=Tests)](https://github.com/elaborate-code/php-json-tongue/actions/workflows/run-tests.yml)
 ![Test Coverage](https://raw.githubusercontent.com/elaborate-code/php-json-tongue/main/badge-coverage.svg)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/elaborate-code/php-json-tongue/Fix%20PHP%20code%20style%20issues?label=Code%20Style)](https://github.com/elaborate-code/php-json-tongue/actions/workflows/fix-php-code-style-issues.yml)
+![maintained](https://img.shields.io/maintenance/yes/2022)
+
 <!-- [![run-tests](https://github.com/elaborate-code/php-json-tongue/actions/workflows/run-tests.yml/badge.svg)](https://github.com/elaborate-code/php-json-tongue/actions/workflows/run-tests.yml) -->
 <!-- [![Fix PHP code style issues](https://github.com/elaborate-code/php-json-tongue/actions/workflows/fix-php-code-style-issues.yml/badge.svg)](https://github.com/elaborate-code/php-json-tongue/actions/workflows/fix-php-code-style-issues.yml) -->
 
-
-A Facade for loading localization data from JSONs within a lang folder
+A Façade for loading localization data from a folder tree of JSON files.
 
 ## Get started
+
+Install the package with composer:
 
 ```text
 composer require elaborate-code/php-json-tongue
 ```
+
+Requirements:
+
+-   PHP 8.0 or higher
 
 ## Usage
 
@@ -33,7 +40,7 @@ $tongue = new TongueFacade('/lang');
 $localization = $tongue->transcribe();
 ```
 
-`$localization` will look like:
+`$localization` will be set like:
 
 ```php
 $localization = [
