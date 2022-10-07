@@ -8,22 +8,26 @@ use Exception;
 
 class JsonFaker implements JsonFakerContract
 {
-    protected string $testingPath;
-
-    protected bool $autoRollBack;
-
     protected array $compositions = [];
 
-    public function __construct(
-        protected bool $auto_roll_back = true,
-        string $temp_path = '/temp/lang'
-    ) {
-        $tests_dir = new File('/tests');
+    protected string $testingPath;
 
-        $this->testingPath = $tests_dir.DIRECTORY_SEPARATOR.$temp_path;
+    protected string $baseTestingPath;
+
+    public function __construct(
+        protected bool $autoRollBack = true,
+        protected string $tempTestingPath = '/temp/lang',
+        string $base_testing_path = '/tests',
+    ) {
+        // TODO: tempTestingPath cannot be empty
+        // TODO: baseTestingPath must be a dir
+
+        $this->baseTestingPath = new File($base_testing_path);
+
+        $this->testingPath = $this->baseTestingPath.DIRECTORY_SEPARATOR.$this->tempTestingPath;
 
         if (! mkdir($this->testingPath, 0777, true)) {
-            throw new Exception("Could not create a temporary directory /tests/$temp_path");
+            throw new Exception("Could not create a temporary directory /tests/{$this->tempTestingPath}");
         }
     }
 
@@ -31,14 +35,21 @@ class JsonFaker implements JsonFakerContract
     //      Chainables
     /* =================================== */
 
-    public static function make(bool $auto_roll_back = true, string $temp_path = '/temp/lang'): static
-    {
-        return new static($auto_roll_back, $temp_path);
+    public static function make(
+        bool $autoRollBack = true,
+        string $tempTestingPath = '/temp/lang',
+        string $base_testing_path = '/tests',
+    ): static {
+        return new static($autoRollBack, $tempTestingPath, $base_testing_path);
     }
 
-    public static function makeAndWriteLocals(array $compositions, bool $auto_roll_back = true, string $temp_path = '/temp/lang'): static
-    {
-        $static = new static($auto_roll_back, $temp_path);
+    public static function makeAndWriteLocals(
+        array $compositions,
+        bool $autoRollBack = true,
+        string $tempTestingPath = '/temp/lang',
+        string $base_testing_path = '/tests',
+    ): static {
+        $static = new static($autoRollBack, $tempTestingPath, $base_testing_path);
 
         foreach ($compositions as $lang => $jsons) {
             $static->addLocale($lang, $jsons);
@@ -91,10 +102,14 @@ class JsonFaker implements JsonFakerContract
 
     public function rollback(): void
     {
-        if (! realpath($this->testingPath)) {
-            throw new Exception("Trying a manual rollback with {$this->testingPath} does not exist");
+        $temp_root = explode('/', trim($this->tempTestingPath, '/'))[0] ?? '';
+
+        $target = $this->baseTestingPath.DIRECTORY_SEPARATOR.$temp_root;
+
+        if (! realpath($target)) {
+            throw new Exception("Trying a manual rollback with {$target} does not exist");
         }
 
-        rm_tree(dirname($this->testingPath));
+        rm_tree($target);
     }
 }
