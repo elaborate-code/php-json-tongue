@@ -99,17 +99,29 @@ final class File implements Stringable
     }
 
     /**
+     * 'Dir_name/locale' => 'dir_absolute_path'
+     */
+    public function getSubDirectories(): array
+    {
+        $directoryContent = $this->getDirectoryContent();
+
+        return array_filter(
+            $directoryContent,
+            fn ($abs_path) => is_dir($abs_path),
+            ARRAY_FILTER_USE_BOTH
+        );
+    }
+
+    /**
      * 'JSON_name' => 'file_absolute_path'
      */
     public function getDirectoryJsonContent(): array
     {
-        if (! $this->isDir()) {
-            throw new Exception("This object isn't a directory");
-        }
+        $directoryContent = $this->getDirectoryContent();
 
         return array_filter(
-            $this->directoryContent,
-            fn ($file_name, $abs_path) => is_json($file_name),
+            $directoryContent,
+            fn ($abs_path, $file_name) => is_json($file_name),
             ARRAY_FILTER_USE_BOTH
         );
     }

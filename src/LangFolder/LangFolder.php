@@ -52,7 +52,7 @@ final class LangFolder implements LangFolderLoader
     {
         $this->localeLoadersCollection = [];
 
-        foreach ($this->directory->getDirectoryContent() as $lang => $abs_path) {
+        foreach ($this->directory->getSubDirectories() as $lang => $abs_path) {
             $this->localeLoadersCollection[$lang] = $this->localeFolderFactory->make($abs_path);
         }
     }
@@ -66,7 +66,7 @@ final class LangFolder implements LangFolderLoader
      */
     public function getLocalesList(): array
     {
-        return array_keys($this->directory->getDirectoryContent());
+        return array_keys($this->directory->getSubDirectories());
     }
 
     /**

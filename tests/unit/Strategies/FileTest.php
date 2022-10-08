@@ -66,11 +66,14 @@ it('throws an exception for calling getDirectoryContent on a file')
     ->expect(fn () => (new File('composer.json'))->getDirectoryContent())
     ->throws(\Exception::class, 'This object isn\'t a directory');
 
+test('getSubDirectories')
+    ->expect((new File())->getSubDirectories())
+    ->not->toContain(realpath(__DIR__.'/../../../composer.json'))
+    ->toContain(realpath(__DIR__.'/../../../src'))
+    ->toContain(realpath(__DIR__.'/../../../tests'))
+    ->toContain(realpath(__DIR__.'/../../../vendor'));
+
 test('getDirectoryJsonContent')
     ->expect((new File())->getDirectoryJsonContent())
     ->toHaveCount(1)
     ->toContain(realpath(__DIR__.'/../../../composer.json'));
-
-it('throws an exception for calling getDirectoryJsonContent on a file')
-    ->expect(fn () => (new File('composer.json'))->getDirectoryJsonContent())
-    ->throws(\Exception::class, 'This object isn\'t a directory');

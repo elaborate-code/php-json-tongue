@@ -21,3 +21,7 @@ Don't worry if your code styling isn't perfect! `Fix PHP code style issues` acti
 ## Testing
 
 The added code needs to be well tested and not reduce the coverage. Feel free to use `Pest` or `PHPUnit`.
+
+## TODO
+
+-   Custom exceptions
